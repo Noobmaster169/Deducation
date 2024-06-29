@@ -3,7 +3,7 @@
  * @param fileToUpload The file to be uploaded to IPFS
  * @returns The IPFS Hash of the uploaded data
  */
-export async function uploadFile(fileToUpload){
+export async function uploadFile(fileToUpload :any){
     const data = new FormData();
     data.set("file", fileToUpload);
     //Make API Call to send data to IPFS
@@ -20,7 +20,7 @@ export async function uploadFile(fileToUpload){
  *  @param jsonToUpload The JSON data to be uploaded to IPFS
  *  @returns The IPFS Hash of the uploaded data
  */
-export async function uploadJSON(jsonToUpload){
+export async function uploadJSON(jsonToUpload :any){
     //Convert data into Blob and add into a Form Data
     const blob = new Blob([JSON.stringify(jsonToUpload)], { type: "application/json" });
     const data = new FormData();
@@ -39,7 +39,7 @@ export async function uploadJSON(jsonToUpload){
  *  @param jsonCid The hash of the JSON data
  *  @returns The fetched JSON data from IPFS
  */
-export async function fetchJSON(jsonCid){
+export async function fetchJSON(jsonCid :string){
     const jsonLink = `${process.env.NEXT_PUBLIC_GATEWAY_URL}/ipfs/${jsonCid}`;
     //Fetch the data from IPFS then get the html data
     const res = await fetch(jsonLink);
