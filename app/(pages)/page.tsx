@@ -4,7 +4,7 @@ import { tempCourses } from "../../data/mockData";
 export default function Home() {
   return (
     <>
-    <div className="flex flex-col gap-4 items-center justify-center h-full">
+    <div className="flex flex-col gap-[100px] items-center justify-center h-full">
       {/* Courses */}
       <div className="flex flex-col gap-6 bg-blue">
         <h1 className="font-semibold text-4xl">Courses</h1>

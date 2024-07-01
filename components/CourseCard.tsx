@@ -12,7 +12,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
     <Link
       className="
         flex flex-col h-[350px] max-w-[400px] outline outline-slate-400 w-full rounded-lg
-        hover:cursor-pointer transform transition duration-150 hover:-translate-y-2 hover:shadow-lg"
+        hover:cursor-pointer transform transition duration-300 hover:-translate-y-2 hover:shadow-lg"
       href={`/courses/${course._id}`}
     >
       {/* Image */}

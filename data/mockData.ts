@@ -1,4 +1,5 @@
 import { ICourse } from "@/models/course.model";
+import { IBounty } from "@/models/bounty.model";
 
 export const tempCourses: ICourse[] = [
   {
@@ -80,5 +81,50 @@ export const tempCourses: ICourse[] = [
     coverImageUrl: "https://picsum.photos/1920/1080",
     creator: "1",
     pages: [],
+  },
+]
+
+export const tempBounties: IBounty[] = [
+  {
+    _id: "1",
+    title: "Bounty 1",
+    description: "This is bounty 1",
+    creator: "1",
+    contract: "0x1234567890abcdef1234567890abcdef12345678",
+  },
+  {
+    _id: "1",
+    title: "Bounty 1",
+    description: "This is bounty 1",
+    creator: "1",
+    contract: "0x1234567890abcdef1234567890abcdef12345679",
+  },
+  {
+    _id: "1",
+    title: "Bounty 1",
+    description: "This is bounty 1",
+    creator: "1",
+    contract: "0x1234567890abcdef1234567890abcdef12345689",
+  },
+  {
+    _id: "1",
+    title: "Bounty 1",
+    description: "This is bounty 1",
+    creator: "1",
+    contract: "0x1234567890abcdef1234567890abcdef12345688",
+  },
+  {
+    _id: "1",
+    title: "Bounty 1",
+    description: "This is bounty 1",
+    creator: "1",
+    contract: "0x1234567890abcdef1234567890abcdef12345988",
+  },
+  {
+    _id: "1",
+    title: "Bounty 1",
+    description: "This is bounty 1",
+    creator: "1",
+    contract: "0x1234567890abcdef1234567890abcdef12345989",
   },
 ]
