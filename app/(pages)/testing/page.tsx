@@ -7,7 +7,7 @@ export default function Address() {
  
   return (
     <main className="flex min-h-screen flex-col items-center justify-evenly p-24">
-        Testing IPFS Features:  
+        Testing IPFS Features:
     </main>
   );
 }
