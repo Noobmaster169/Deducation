@@ -42,7 +42,7 @@ export default function NavBar() {
                 onClick = {() => setDropdown(!dropdown)}
             >
                 <div 
-                className={`${dropdown ? `delay-200 scale-y-100 top-origin duration-200` : `scale-y-0`} flex flex-col font-medium p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse dark:bg-gray-800 dark:border-gray-700`}>
+                className={`flex flex-col font-medium p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 rtl:space-x-reverse dark:bg-gray-800 dark:border-gray-700`}>
                     <div className = "flex items-center mx-auto p-2">
                         <h1 className = "text-xl">Deducation</h1>
                     </div>
@@ -92,13 +92,3 @@ function PCNavLinks() {
       </>
     );
 }
-
-{/* <Link href="home">
-                    <h2>Home</h2>
-                </Link>
-                <Link href="projects">
-                    <h2>Projects</h2>
-                </Link>
-                <Link href="bounties">
-                    <h2>Bounties</h2>
-                </Link> */}
