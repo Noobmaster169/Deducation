@@ -7,4 +7,5 @@ export interface ICourse {
   coverImageUrl: string;
   creator: string;
   pages: IPage[];
+  category: string;
 }

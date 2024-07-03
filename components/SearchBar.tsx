@@ -9,14 +9,14 @@ const SearchBar = ({ placeholder }: { placeholder: string }) => {
   const router = useRouter();
 
   useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
+    const delayDebounceFn = setTimeout(() => { // Delays the search query by 300ms
       const updateUrlQuery = () => {
         const newUrl = createNewUrl({ newParam: "q", newValue: searchQuery });
         router.push(newUrl, undefined);
       };
   
       updateUrlQuery();
-    }, 200);
+    }, 300);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchQuery, router]);
