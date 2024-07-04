@@ -4,4 +4,8 @@ export interface IBounty {
   description: string;
   creator: string;
   contract: string;
+  placeholderPic: string;
+  reward: number;
+  currency: string;
+  dueDate: Date;
 }
