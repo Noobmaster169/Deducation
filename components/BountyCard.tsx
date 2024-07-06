@@ -21,7 +21,7 @@ const BountyCard = ({ bounty }: BountyCardProps) => {
                 alt="creator profile picture"
                 width={256}
                 height={160}
-                className = "h-min-30"    
+                className = "h-min-40"    
                 />
 
             {/* text */}
