@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import AppWalletProvider from "../components/AppWalletProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins"
+});
 
 export const metadata: Metadata = {
   title: "Project Name",
@@ -17,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={poppins.variable}>
         <AppWalletProvider>{children}</AppWalletProvider>
       </body>
     </html>
