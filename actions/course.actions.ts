@@ -1,4 +1,4 @@
-import { createNewUrl } from "@/utils/searchquery";
+import { createNewUrl } from "@/utils/url";
 import { tempCourses } from "@/data/mockData";
 
 type getAllCoursesProps = {

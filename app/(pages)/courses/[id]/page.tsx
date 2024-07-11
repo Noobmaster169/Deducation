@@ -1,21 +1,27 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import "./style.css";
 import TextEditor from '@/components/TextEditor';
-import DOMPurify from 'dompurify';
 import { getCourseById } from '@/actions/course.actions';
 import CourseToolbar from '@/components/CourseToolbar';
 import CoursePageSidebar from '@/components/CoursePageSidebar';
 
+import DOMPurify from 'dompurify';
+import { createNewUrl } from '@/utils/url';
+
 const CoursePage = ({ params }: { params: { id: string } }) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false)
-  const [showSidebar, setShowSidebar] = useState<boolean>(true)
   const isCourseCreator = true;
   const course = getCourseById(params.id);
-  const [value, setValue] = useState<string>(course?.pages[0].content ?? "");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page") ?? "1";
+
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [showSidebar, setShowSidebar] = useState<boolean>(true)
+  const [value, setValue] = useState<string>(course?.pages[Number(page) - 1].content ?? "");
 
   const handleSaveEditClick = () => {
     if (isEditing) {
@@ -25,9 +31,16 @@ const CoursePage = ({ params }: { params: { id: string } }) => {
     setIsEditing(!isEditing);
   }
 
+  useEffect(() => {
+    const newUrl = createNewUrl({ newParam: "page", newValue: page});
+    setValue(course?.pages[Number(page) - 1].content ?? "");
+    
+    router.push(newUrl);
+  }, [router, page])
+
   return (
     <div className="flex flex-col h-screen">
-      <CourseToolbar courseTitle={course?.title} showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      <CourseToolbar course={course} showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
 
       <div className="flex flex-row flex-grow">
         {showSidebar && (
