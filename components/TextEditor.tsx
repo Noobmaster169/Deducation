@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 import {
-	BalloonEditor,
 	AccessibilityHelp,
 	Alignment,
 	Autoformat,
@@ -85,17 +84,13 @@ import './TextEditorStyle.css';
  */
 const CKBOX_TOKEN_URL = '<YOUR_CKBOX_TOKEN_URL>';
 
-const TextEditor = () => {
-	const editorContainerRef = useRef(null);
-	const editorRef = useRef(null);
-	const [isLayoutReady, setIsLayoutReady] = useState(false);
+type TextEditorProps = {
+  data: string;
+  onDataChanged: (newData: string) => void;
 
-	useEffect(() => {
-		setIsLayoutReady(true);
+}
 
-		return () => setIsLayoutReady(false);
-	}, []);
-
+const TextEditor = ({ data, onDataChanged }: TextEditorProps) => {
 	const editorConfig = {
 		toolbar: {
 			items: [
@@ -183,7 +178,6 @@ const TextEditor = () => {
 			LinkImage,
 			List,
 			ListProperties,
-			Markdown,
 			MediaEmbed,
 			Paragraph,
 			PasteFromMarkdownExperimental,
@@ -282,7 +276,7 @@ const TextEditor = () => {
 					title: 'Heading 6',
 					class: 'ck-heading_heading6'
 				}
-			] as HeadingOption[]
+			]
 		},
 		image: {
 			toolbar: [
@@ -320,11 +314,32 @@ const TextEditor = () => {
 		placeholder: 'Type or paste your content here!',
 		table: {
 			contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
-		}
+		},
+    ui: {
+      poweredBy: {
+        position: 'inside',
+        side: 'right',
+        label: '',
+        verticalOffset: 0,
+        horizontalOffset: 0,
+      }
+    }
 	};
 
+  const editorContainerRef = useRef(null);
+  const editorDataRef = useRef();
+	const editorRef = useRef(null);
+	const [isLayoutReady, setIsLayoutReady] = useState(false);
+  const [value, setValue] = useState<string>("");
+
+	useEffect(() => {
+		setIsLayoutReady(true);
+
+		return () => setIsLayoutReady(false);
+	}, []);
+
 	return (
-		<div>
+		<div className="w-full">
 			<div className="main-container">
 				<div className="editor-container editor-container_balloon-editor editor-container_include-block-toolbar" ref={editorContainerRef}>
 					<div className="editor-container__editor">
@@ -333,6 +348,13 @@ const TextEditor = () => {
               <CKEditor
                 editor={ ClassicEditor }
                 config={ editorConfig as EditorConfig }
+                onReady={editor => {
+                  editor.setData(data)
+                }}
+                onChange={ (e, editor) => {
+                  const data = editor.getData();
+                  onDataChanged(data);
+                }}
               />}
             </div>
 					</div>

@@ -8,20 +8,19 @@
 
 .main-container {
 	font-family: 'Lato';
-	width: fit-content;
-	margin-left: auto;
-	margin-right: auto;
+	width: 100%;
 }
 
 .ck-content {
-	font-family: 'Lato';
+  font-family: 'Lato';
 	line-height: 1.6;
 	word-break: break-word;
+  font-size: inherit;
 }
 
-.editor-container_include-block-toolbar {
+/* .editor-container_include-block-toolbar {
 	margin-left: 42px;
-}
+} */
 
 .editor-container_balloon-editor .editor-container__editor {
 	min-width: 795px;
@@ -35,4 +34,28 @@
 .ck-content ol {
   padding-left: 50px;
 	list-style-type: decimal;
+}
+
+.ck-content h1 {
+  font-size: 2em;
+}
+
+.ck-content h2 {
+  font-size: 1.5em;
+}
+
+.ck-content h3 {
+  font-size: 1.17em;
+}
+
+.ck-content h4 {
+  font-size: 1em;
+}
+
+.ck-content h5 {
+  font-size: 0.83em;
+}
+
+.ck-content h6 {
+  font-size: 0.67em;
 }

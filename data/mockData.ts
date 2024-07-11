@@ -8,7 +8,33 @@ export const tempCourses: ICourse[] = [
     description: "This is course 1",
     coverImageUrl: "https://picsum.photos/1920/1080",
     creator: "1",
-    pages: [],
+    pages: [
+      {
+        _id: "1",
+        title: "Page 1",
+        content:"<h1>Test 1</h1><p>Test paragraph</p><p>Hello world</p><h3>Test 2</h3>",
+      },
+      {
+        _id: "2",
+        title: "Page 2",
+        content:"<h1>Test 2</h1><p>Test paragraph</p><p>Hello world</p><h3>Test 2</h3>",
+      },
+      {
+        _id: "3",
+        title: "Page 3",
+        content:"<h1>Test 3</h1><p>Test paragraph</p><p>Hello world</p><h3>Test 2</h3>",
+      },
+      {
+        _id: "4",
+        title: "Page 4",
+        content:"<h1>Test 4</h1><p>Test paragraph</p><p>Hello world</p><h3>Test 2</h3>",
+      },
+      {
+        _id: "5",
+        title: "Page 5",
+        content:"<h1>Test 5</h1><p>Test paragraph</p><p>Hello world</p><h3>Test 2</h3>",
+      },
+    ],
     category: "Web Development",
   },
   {
