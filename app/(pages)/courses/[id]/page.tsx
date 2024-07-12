@@ -44,7 +44,7 @@ const CoursePage = ({ params }: { params: { id: string } }) => {
 
       <div className="flex flex-row flex-grow">
         {showSidebar && (
-          <CoursePageSidebar course={course} />
+          <CoursePageSidebar course={course} currentPage={page} />
         )}
         <div className="w-full flex flex-col text-black">
           {isCourseCreator && (
