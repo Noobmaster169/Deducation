@@ -6,10 +6,10 @@ import { useRouter } from 'next/navigation';
 
 type CoursePageSidebarProps = {
   course: ICourse | undefined;
-  currentPage: string;
+  pageId: string;
 }
 
-const CoursePageSidebar = ({ course, currentPage }: CoursePageSidebarProps) => {
+const CoursePageSidebar = ({ course, pageId }: CoursePageSidebarProps) => {
   const router = useRouter();
 
   const handleChangePageClick = (pageId: string) => {
@@ -24,7 +24,7 @@ const CoursePageSidebar = ({ course, currentPage }: CoursePageSidebarProps) => {
           key={page._id}
           className={`
             cursor-pointer hover:text-gray-300 text-base rounded-lg w-full
-            ${page._id == currentPage ? "bg-primary bg-opacity-20" : ""}
+            ${page._id == pageId ? "bg-primary bg-opacity-20" : ""}
           `}
         >
           <p className="py-2 px-3" onClick={() => handleChangePageClick(page._id)}>{page.title}</p>

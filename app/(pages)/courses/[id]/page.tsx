@@ -11,9 +11,10 @@ import CoursePageSidebar from '@/components/CoursePageSidebar';
 
 import DOMPurify from 'dompurify';
 import { createNewUrl } from '@/utils/url';
+import PageCreatorControls from '@/components/PageCreatorControls';
 
 const CoursePage = ({ params }: { params: { id: string } }) => {
-  const isCourseCreator = true;
+  const isCourseCreator = true; // TODO: Replace with actual value
   const course = getCourseById(params.id);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -34,7 +35,7 @@ const CoursePage = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const newUrl = createNewUrl({ newParam: "page", newValue: page});
     setValue(course?.pages[Number(page) - 1].content ?? "");
-    
+
     router.push(newUrl);
   }, [router, page])
 
@@ -44,18 +45,11 @@ const CoursePage = ({ params }: { params: { id: string } }) => {
 
       <div className="flex flex-row flex-grow">
         {showSidebar && (
-          <CoursePageSidebar course={course} currentPage={page} />
+          <CoursePageSidebar course={course} pageId={page} />
         )}
-        <div className="w-full flex flex-col text-black">
+        <div className="w-full flex flex-col text-black z-99">
           {isCourseCreator && (
-            <div className="flex justify-end">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
-                onClick={handleSaveEditClick}
-              >
-                {isEditing ? "Save" : "Edit"}
-              </button>
-            </div>
+           <PageCreatorControls course={course} isEditing={isEditing} setIsEditing={setIsEditing} />
           )}
           
           {isEditing && (
@@ -65,7 +59,7 @@ const CoursePage = ({ params }: { params: { id: string } }) => {
           {!isEditing && (
             <div
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(value) }}
-              className="text-white ck-content px-10"
+              className="text-white ck-content px-10 pt-4 z-1 relatve"
             />
           )}
         </div>
@@ -75,4 +69,4 @@ const CoursePage = ({ params }: { params: { id: string } }) => {
   );
 }
 
-export default CoursePage
+export default CoursePage;
