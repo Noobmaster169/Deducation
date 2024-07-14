@@ -1,25 +1,46 @@
 "use client"
 
-import { createNewUrl } from '@/utils/url';
-import { useRouter } from 'next/navigation';
+import { createNewUrl } from '@/utils/searchquery';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const SearchBar = ({ placeholder }: { placeholder: string }) => {
-  const [searchQuery, setSearchQuery] = useState<string>("")
-  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-  useEffect(() => {
-    const delayDebounceFn = setTimeout(() => { // Delays the search query by 300ms
-      const updateUrlQuery = () => {
-        const newUrl = createNewUrl({ newParam: "q", newValue: searchQuery });
-        router.push(newUrl, undefined);
-      };
-  
-      updateUrlQuery();
+  function handleSearch(term: string) {
+    const searchDelay = setTimeout(() => {
+      const params = new URLSearchParams(searchParams);
+      
+      console.log(params.get('q'))
+      if (term) {
+        params.set('q', term);
+      } else {
+        params.delete('q');
+      }
+      replace(`${pathname}?${params.toString()}`)
     }, 300);
+    
+    return () => clearTimeout(searchDelay);
+  }
 
-    return () => clearTimeout(delayDebounceFn);
-  }, [searchQuery, router]);
+ // Backlog of previous search function
+  // const [searchQuery, setSearchQuery] = useState<string>("")
+  // const router = useRouter();
+
+  // useEffect(() => {
+  //   const delayDebounceFn = setTimeout(() => { // Delays the search query by 300ms
+  //     const updateUrlQuery = () => {
+  //       const newUrl = createNewUrl({ newParam: "q", newValue: searchQuery });
+  //       router.push(newUrl, undefined);
+  //     };
+  
+  //     updateUrlQuery();
+  //   }, 300);
+
+  //   return () => clearTimeout(delayDebounceFn);
+  // }, [searchQuery, router]);
 
   return (
     <div className="w-full">
@@ -27,7 +48,7 @@ const SearchBar = ({ placeholder }: { placeholder: string }) => {
         type="text"
         placeholder={placeholder}
         className="text-slate-200 outline-none bg-[#373737] p-5 rounded-lg w-full md:max-w-[350px]"
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={(e) => handleSearch(e.target.value)}
       />
     </div>
   )

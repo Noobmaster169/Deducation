@@ -6,21 +6,22 @@ import { useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation';
 
 export default function NavBar() {
-    const [dropdown, setDropdown] = useState(false);
+    const [dropdown, setDropdown] = useState<boolean>(false);
 
     return (
         <nav className = "w-full p-4 dark:bg-gray-900 fixed top-0 left-0 right-0 position-sticky z-50">
             <div className="justify-between mx-auto px-4 lg:max-w-7x1 items-center flex md:px-8">
                 <h1 className = "hidden md:block text-semibold text-3xl">Deducation</h1>
+                <WalletMultiButton style = {{ opacity: 0, pointerEvents: 'none' }}/>
 
                 <div className="gap-5 hidden md:flex center">
                     <PCNavLinks />
                 </div>
             
+                <h1 className = "hidden md:block text-semibold text-3xl opacity-0">Deducation</h1>
                 <WalletMultiButton style={{}}/>
 
                 <button

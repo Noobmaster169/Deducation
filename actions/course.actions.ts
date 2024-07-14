@@ -1,5 +1,6 @@
 import { createNewUrl } from "@/utils/url";
 import { tempCourses } from "@/data/mockData";
+import { useSearchParams } from "next/navigation";
 
 type getAllCoursesProps = {
   query: string,
@@ -7,14 +8,17 @@ type getAllCoursesProps = {
   page?: number,
 }
 
-export function getAllCourses({ query, limit = 6, page = 1 }: getAllCoursesProps) {
+export function getAllCourses({ query, limit = 9, page = 1 }: getAllCoursesProps) {
   const url = createNewUrl({ newParam: "page", newValue: page.toString() });
+  const searchParams = useSearchParams();
+  page = Number(searchParams.get('page')) || 1;
 
   // TODO: Replace mockdata with actual data
   if (query === "") {
     return {
-      data: tempCourses,
+      data: tempCourses.slice((page - 1) * limit, page * limit),
       page: page,
+      totalPages: Math.ceil(tempCourses.length/limit),
     };
   }
 
@@ -28,8 +32,9 @@ export function getAllCourses({ query, limit = 6, page = 1 }: getAllCoursesProps
   console.log("Query: ", query)
   console.log("Filtered courses: ", filteredCourses)
   return {
-    data: filteredCourses,
+    data: filteredCourses.slice((newPage - 1) * limit, newPage * limit),
     page: newPage,
+    totalPages: Math.ceil(filteredCourses.length/limit),
   };
 }
 

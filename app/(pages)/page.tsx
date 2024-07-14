@@ -22,7 +22,7 @@ export default function Home() {
     </div>
 
       {/* Bounties */}
-      <div className="flex flex-col gap-[100px] px-80 h-2/3">
+      <div className="flex flex-col gap-[100px] px-80 h-2/3 pt-8">
         <div className="flex flex-col gap-6 bg-blue">
           <h1 className="font-semibold text-4xl">Bounties</h1>
           <div className="flex flex-col gap-5">
