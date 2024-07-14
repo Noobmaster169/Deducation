@@ -15,7 +15,7 @@ export default function Home() {
         <h1 className="font-semibold text-4xl">Courses</h1>
         <div className="flex gap-5">
           {tempCourses.slice(0, 3).map(course => (
-            <CourseCard course={course} key={course._id}/>
+            <CourseCard course={course} key={course._id} />
           ))}
         </div>
       </div>

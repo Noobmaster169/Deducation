@@ -1,4 +1,4 @@
-import { createNewUrl } from "@/utils/searchquery";
+import { createNewUrl } from "@/utils/url";
 import { tempCourses } from "@/data/mockData";
 
 type getAllCoursesProps = {
@@ -31,4 +31,8 @@ export function getAllCourses({ query, limit = 6, page = 1 }: getAllCoursesProps
     data: filteredCourses,
     page: newPage,
   };
+}
+
+export function getCourseById(id: string) {
+  return tempCourses.find((course) => course._id === id);
 }
