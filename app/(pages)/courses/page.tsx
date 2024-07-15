@@ -6,6 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import { useSearchParams } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import PaginationControls from "@/components/PaginationControls";
+import { Suspense } from "react";
 
 const AllCoursePage = () => {
   const searchParams = useSearchParams() || 1;
@@ -22,7 +23,9 @@ const AllCoursePage = () => {
         <div className="md:flex-row flex flex-col justify-between items-center">
           <h1 className="text-4xl font-semibold">Browse Courses</h1>
           <div className="flex items-center mt-5 w-full md:max-w-[350px]">
-            <SearchBar placeholder="Search for a course..."/>
+            <Suspense>
+              <SearchBar placeholder="Search for a course..."/>
+            </Suspense>
             {/* Filter */}
           </div>
         </div>
