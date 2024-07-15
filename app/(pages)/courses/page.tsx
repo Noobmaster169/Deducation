@@ -29,12 +29,12 @@ const AllCoursePage = () => {
             {/* Filter */}
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
           {data.map(course => (
             <CourseCard course={course} key={course._id} />
             ))}
-        </div>
-        {/* <Suspense fallback={<>LOading...</>}>
+        </div> */}
+        {/* <Suspense fallback={<>Loading...</>}>
           <PaginationControls totalPages={totalPages}/>
         </Suspense> */}
       </div>
