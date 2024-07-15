@@ -12,13 +12,14 @@ import CoursePageSidebar from '@/components/CoursePageSidebar';
 import DOMPurify from 'dompurify';
 import { createNewUrl } from '@/utils/url';
 import PageCreatorControls from '@/components/PageCreatorControls';
+import { SearchParamProps } from '@/types';
 
-const CoursePage = ({ params }: { params: { id: string } }) => {
+const CoursePage = ({ params: { id } ,searchParams }: SearchParamProps) => {
   const isCourseCreator = true; // TODO: Replace with actual value
-  const course = getCourseById(params.id);
+  const course = getCourseById(id);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const page = searchParams.get("page") ?? "1";
+  // const searchParams = useSearchParams();
+  const page = searchParams?.page as string || "1";
 
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [showSidebar, setShowSidebar] = useState<boolean>(true)

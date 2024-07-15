@@ -2,8 +2,9 @@ import CourseCard from "../../components/CourseCard";
 import BountyCard from "../../components/BountyCard";
 import { tempCourses, tempBounties } from "../../data/mockData";
 import NavBar from "../../components/NavBar";
+import { SearchParamProps } from "@/types";
  
-export default function Home() {
+export default function Home({ searchParams }: SearchParamProps) {
   return (
     <>
       
