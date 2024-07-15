@@ -1,6 +1,6 @@
 "use client"
 
-import { createNewUrl } from '@/utils/searchquery';
+import { createNewUrl } from '@/lib/utils/searchquery';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
