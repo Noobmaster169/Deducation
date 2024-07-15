@@ -9,12 +9,13 @@ import PaginationControls from "@/components/PaginationControls";
 import { Suspense } from "react";
 
 const AllCoursePage = () => {
-  // const searchParams = useSearchParams() || 1;
-  // const query = searchParams.get("q") || "";
+  const searchParams = useSearchParams() || 1;
+  const query = searchParams.get("q") || "";
 
-  // const { data, page, totalPages } = getAllCourses({ query });
+  const { data, page, totalPages } = getAllCourses({ query });
 
   return (
+  <Suspense>
     <div className="flex justify-center h-full">
 
       <NavBar />
@@ -25,7 +26,7 @@ const AllCoursePage = () => {
           <div className="flex items-center mt-5 w-full md:max-w-[350px]">
             {/* <Suspense fallback={<>Loading...</>}>
               <SearchBar placeholder="Search for a course..."/>
-            </Suspense> */}
+              </Suspense> */}
             {/* Filter */}
           </div>
         </div>
@@ -33,12 +34,13 @@ const AllCoursePage = () => {
           {data.map(course => (
             <CourseCard course={course} key={course._id} />
             ))}
-        </div> */}
+            </div> */}
         {/* <Suspense fallback={<>Loading...</>}>
           <PaginationControls totalPages={totalPages}/>
-        </Suspense> */}
+          </Suspense> */}
       </div>
     </div>
+  </Suspense>
   )
 }
 
