@@ -1,3 +1,5 @@
+"use client";
+
 import { createNewUrl } from "@/utils/url";
 import { tempCourses } from "@/data/mockData";
 import { useSearchParams } from "next/navigation";

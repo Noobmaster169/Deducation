@@ -23,7 +23,7 @@ const AllCoursePage = () => {
         <div className="md:flex-row flex flex-col justify-between items-center">
           <h1 className="text-4xl font-semibold">Browse Courses</h1>
           <div className="flex items-center mt-5 w-full md:max-w-[350px]">
-            <Suspense>
+            <Suspense fallback={<>Loading...</>}>
               <SearchBar placeholder="Search for a course..."/>
             </Suspense>
             {/* Filter */}
@@ -34,7 +34,9 @@ const AllCoursePage = () => {
             <CourseCard course={course} key={course._id} />
             ))}
         </div>
-        <PaginationControls totalPages={totalPages}/>
+        <Suspense fallback={<>LOading...</>}>
+          <PaginationControls totalPages={totalPages}/>
+        </Suspense>
       </div>
     </div>
   )
