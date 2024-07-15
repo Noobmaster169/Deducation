@@ -3,13 +3,14 @@
 import { getAllCourses } from "@/actions/course.actions";
 import CourseCard from "@/components/CourseCard";
 import SearchBar from "@/components/SearchBar";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import PaginationControls from "@/components/PaginationControls";
 import { Suspense } from "react";
 
 const AllCoursePage = () => {
   const searchParams = useSearchParams() || 1;
+  const router = useRouter();
   // const query = searchParams.get("q") || "";
 
   // const { data, page, totalPages } = getAllCourses({ query });
