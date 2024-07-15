@@ -1,15 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    missingSuspenseWithCSRBailout: false,
     images: {
       domains: ['picsum.photos']
     }
 };
-
-module.exports = {
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
-}
 
 export default nextConfig;
