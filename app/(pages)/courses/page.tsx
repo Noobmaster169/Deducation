@@ -3,11 +3,10 @@
 import { getAllCourses } from "@/actions/course.actions";
 import CourseCard from "@/components/CourseCard";
 import SearchBar from "@/components/SearchBar";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import PaginationControls from "@/components/PaginationControls";
 import { Suspense } from "react";
-import { useRouter } from "next/router";
 
 const AllCoursePage = () => {
   // const searchParams = useSearchParams() || 1;
