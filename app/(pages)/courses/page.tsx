@@ -9,7 +9,7 @@ import PaginationControls from "@/components/PaginationControls";
 import { Suspense } from "react";
 
 const AllCoursePage = () => {
-  const searchParams = useSearchParams() || 1;
+  const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
 
   // const { data, page, totalPages } = getAllCourses({ query });
