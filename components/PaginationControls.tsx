@@ -10,6 +10,7 @@ export default function PaginationControls({ totalPages }: { totalPages: number 
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page') || 1);
+  const hasQuery = searchParams.has('q');
   const { replace } = useRouter();
 
   const createPageURL = (pageNumber: number | string) => {

@@ -14,7 +14,10 @@ const SearchBar = ({ placeholder }: { placeholder: string }) => {
       const params = new URLSearchParams(searchParams);
       
       console.log(params.get('q'))
-      if (term) {
+      if (term && params.get("page") != "1") {
+        params.set('q', term);
+        params.set('page', "1");
+      } else if (term) {
         params.set('q', term);
       } else {
         params.delete('q');
