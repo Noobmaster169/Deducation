@@ -10,7 +10,7 @@ const FormItem = ({ placeholder, maxLength, onChange }: FormItemProps) => {
   return (
     <>
       <input
-        className="flex bg-secondary bg-opacity-20 rounded-md p-2 w-[450px] ring-0 focus:outline-none"
+        className="flex bg-secondary bg-opacity-20 rounded-md p-2 w-full ring-0 focus:outline-none"
         type="text"
         placeholder={placeholder}
         maxLength={maxLength}
