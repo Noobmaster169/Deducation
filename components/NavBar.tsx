@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation';
 
 export default function NavBar() {
