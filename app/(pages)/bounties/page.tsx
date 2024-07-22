@@ -10,8 +10,7 @@ export default function bountyPage() {
             <NavBar />
 
             {/* Bounties */}
-            <div className="flex gap-[100px] px-30 h-2/3">
-                <div className="flex flex-col gap-6 bg-blue h-full">
+            <div className="flex flex-col gap-6 px-30 h-2/3">
                     <h1 className="font-semibold text-4xl">Bounties</h1>
                     <div className="flex flex-col gap-5 h-fit">
                         {tempBounties.map(bounty => (
@@ -21,7 +20,6 @@ export default function bountyPage() {
                     </div>
                 </div>
             </div>
-        </div>
     </>
     )
 }
