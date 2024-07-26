@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { uploadFile, uploadJSON, fetchJSON } from "../../utils/ipfs";
+import { uploadFile, uploadJSON, fetchJSON } from "../../../utils/ipfs";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null); // State to hold the selected file
