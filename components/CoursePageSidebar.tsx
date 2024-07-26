@@ -1,8 +1,11 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect } from 'react'
 
 import { ICourse } from '@/models/course.model';
 import { createNewUrl } from '@/utils/url';
 import { useRouter } from 'next/navigation';
+import { randomUUID } from 'crypto';
 
 type CoursePageSidebarProps = {
   course: ICourse | undefined;
@@ -16,6 +19,19 @@ const CoursePageSidebar = ({ course, pageId }: CoursePageSidebarProps) => {
     const newUrl = createNewUrl({ newParam: "page", newValue: pageId });
     router.push(newUrl);
   }
+
+  useEffect(() => {
+    // doesn't work
+    if (course?.pages.length == 0) {
+      course?.pages.push({
+        _id: randomUUID(),
+        title: "Page 1",
+        content: "<h1>Your First Page</h1><p>Click on the edit button to start editing this page</p>",
+      })
+    }
+
+    console.log(course);
+  }, [])
 
   return (
     <div className="h-full w-[250px] flex flex-col pt-1 px-1 border-r-[1px] border-secondary">
