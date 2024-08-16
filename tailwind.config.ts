@@ -1,6 +1,6 @@
-import type { Config } from "tailwindcss";
+import { withUt } from 'uploadthing/tw';
 
-const config: Config = {
+module.exports = withUt({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,8 +13,16 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'text': '#f5f5f5',
+        'background': '#1f1f1f',
+        'primary': '#5ed768',
+        'secondary': '#5a5a68',
+        'accent': '#0abaff',
+      },
     },
   },
-  plugins: [],
-};
-export default config;
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+});
